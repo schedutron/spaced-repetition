@@ -1,0 +1,4 @@
+spaced_repetition/env.py
+.vscode/
+.venv/
+.DS_Store
