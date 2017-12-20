@@ -14,7 +14,8 @@ def main():
     url = parse.urlparse(DATABASE_URL)
     conn = database.db_connect(url)
     cur = conn.cursor()
-    print(functions.learn_today(cur))
+    
+    functions.display_todays_stuff(cur)
 
 if __name__ == "__main__":
     main()

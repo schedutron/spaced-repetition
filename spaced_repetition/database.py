@@ -28,3 +28,10 @@ def get_last_rev_with_id_and_level(cur):
     """Gets last revisions for all items with their ids."""
     cur.execute("SELECT id, last_revision, level from to_learn")
     return cur
+
+
+def get_rows_for_ids(cur, ids):
+    """Fetches rows with given ids."""
+    # Following line is hacky. Fix it ASAP!
+    cur.execute("SELECT * FROM to_learn WHERE id IN " + str(tuple(ids)))
+    return cur
