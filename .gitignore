@@ -2,3 +2,5 @@ spaced_repetition/env.py
 .vscode/
 .venv/
 .DS_Store
+spaced_repetition/__pycache__/
+spaced_repetition/tests/__pycache__/
