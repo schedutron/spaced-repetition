@@ -8,3 +8,5 @@ install:
 # command to run tests
 script:
   - pytest # or py.test for Python versions 3.5 and below
+before install:
+  -  openssl aes-256-cbc -K $encrypted_41496df54f1e_key -iv $encrypted_41496df54f1e_iv -in env.py.enc -out spaced_repetition/env.py -d
