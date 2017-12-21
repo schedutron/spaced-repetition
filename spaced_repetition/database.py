@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Database interface functions to be used elsewhere."""
+import datetime
 import psycopg2
 
 def db_connect(url):
@@ -34,5 +35,14 @@ def get_last_rev_with_id_and_level(cur):
 def get_rows_for_ids(cur, ids):
     """Fetches rows with given ids."""
     # Following line is hacky. Fix it ASAP!
-    cur.execute("SELECT * FROM to_learn WHERE id IN " + str(tuple(ids)))
+    cur.execute("SELECT * FROM to_learn WHERE id IN %s", (tuple(ids),))
     return cur
+
+
+def set_for_next_date(cur, ids):
+    """Update level and prev_date after revision is done."""
+    # Fix the following hacky query ASAP.
+    cur.execute("UPDATE to_learn SET last_revision=%s, level=level+1 WHERE id IN %s",
+                (datetime.datetime.now().date(), tuple(ids))
+               )
+    cur.connection.commit()

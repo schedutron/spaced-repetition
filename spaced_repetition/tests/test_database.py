@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Tests for database interface functions."""
+# Clone the current database instance for testing.
 import datetime
 import unittest
 from urllib import parse
@@ -40,6 +41,9 @@ class TestDatabase(unittest.TestCase):
             self.assertEqual(row[0], id_val)
             self.assertEqual(row[1], title)
             count += 1
+    
+    def test_set_for_next_date(self):
+        pass
 
 
 if __name__ == "__main__":

@@ -11,8 +11,23 @@ def main():
     url = parse.urlparse(DATABASE_URL)
     conn = database.db_connect(url)
     cur = conn.cursor()
+    while True:
+        query = input("-|-> ")
+        if query.lower() == "today":
+            functions.display_todays_stuff(cur)
+        elif query.lower() == "update":
+            ids = input("Enter the ids that you have revised: ")
+            ids = [int(i.strip()) for i in ids.split(',')]
+            database.set_for_next_date(cur, ids)
+            print("Update Done:\n")
+            cur = database.get_rows_for_ids(cur, ids)
+            functions.display_rows(cur)
+        elif query.lower() == "exit":
+            print("Goodbye.")
+            break
+        else:
+            print("Please enter a valid query.")
 
-    functions.display_todays_stuff(cur)
 
 if __name__ == "__main__":
     main()
