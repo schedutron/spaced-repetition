@@ -9,4 +9,5 @@ Create `env.py` with the following contents:
 
 ```
 DATABASE_URL = 'your postgres database url'
+TEST_DATABASE_URL = 'url of test database'
 ```
