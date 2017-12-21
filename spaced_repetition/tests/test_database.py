@@ -44,6 +44,9 @@ class TestDatabase(unittest.TestCase):
     
     def test_set_for_next_date(self):
         pass
+    
+    def test_init_test_db(self):
+        pass
 
 
 if __name__ == "__main__":

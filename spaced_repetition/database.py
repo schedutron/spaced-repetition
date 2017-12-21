@@ -46,3 +46,8 @@ def set_for_next_date(cur, ids):
                 (datetime.datetime.now().date(), tuple(ids))
                )
     cur.connection.commit()
+
+
+def init_test_db():
+    """Initialize test database - for testing."""
+    pass
