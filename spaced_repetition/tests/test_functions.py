@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Tests for utility functions."""
 import contextlib
 import datetime
 import unittest
@@ -10,6 +11,7 @@ from spaced_repetition.functions import *
 from spaced_repetition import database
 
 class TestFunctions(unittest.TestCase):
+    """Tests for utility functions."""
     url = parse.urlparse(DATABASE_URL)
     conn = database.db_connect(url)
     dsn = database.get_dsn(conn)
@@ -23,14 +25,14 @@ class TestFunctions(unittest.TestCase):
         today = datetime.datetime.now().date()
         tomorrow = today + datetime.timedelta(days=1)
         self.assertEqual(get_next_date(today, 1), tomorrow)
-    
+
     def test_learn_today(self):
         self.assertEqual(type(learn_today(self.cur)), list)
-    
+
     def test_get_colnames(self):
         self.cur.execute("SELECT id, title, add_date from to_learn")
         self.assertEqual(get_colnames(self.cur), ['id', 'title', 'add_date'])
-    
+
     def test_display_rows(self):
         out = StringIO()
         self.cur.execute(
@@ -43,7 +45,7 @@ class TestFunctions(unittest.TestCase):
                    "0  Polynomial Multiplication   2017-12-19 \n"\
                    "1  Design of Computer Programs 2017-10-20 \n"
         self.assertEqual(output, expected)
-    
+
     def test_display_todays_stuff(self):
         out = StringIO()
         with contextlib.redirect_stdout(out):

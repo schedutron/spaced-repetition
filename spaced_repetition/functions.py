@@ -30,11 +30,11 @@ def display_rows(cur):
     header = get_colnames(cur)
     rows = cur.fetchall()
     lengths = []  # Contains length of largest word in the column at the same index.
-    for i in range(len(header)):
-        length = max(max([len(str(row[i])) for row in rows]), len(header[i]))
+    for i, column in enumerate(header):
+        length = max(max([len(str(row[i])) for row in rows]), len(column))
         lengths.append(length)
         string = '%-' + str(length) + 's'
-        print(string % header[i], end=' ')
+        print(string % column, end=' ')
     print('\n')
     for row in rows:
         for i in range(len(header)):
@@ -45,7 +45,6 @@ def display_rows(cur):
 
 def display_todays_stuff(cur):
     """Display stuff to learn today."""
-    import sys
     learn_ids = learn_today(cur)
     cur = database.get_rows_for_ids(cur, learn_ids)
     display_rows(cur)

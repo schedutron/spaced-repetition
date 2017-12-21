@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Database interface functions to be used elsewhere."""
 import psycopg2
 
 def db_connect(url):

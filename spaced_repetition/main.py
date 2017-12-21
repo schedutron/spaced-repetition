@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 """Main script for the spaced repitition app."""
-
-import datetime
 from urllib import parse
-import psycopg2
 
 from spaced_repetition import database
 from spaced_repetition import functions
@@ -14,7 +11,7 @@ def main():
     url = parse.urlparse(DATABASE_URL)
     conn = database.db_connect(url)
     cur = conn.cursor()
-    
+
     functions.display_todays_stuff(cur)
 
 if __name__ == "__main__":
