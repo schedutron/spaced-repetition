@@ -10,7 +10,7 @@ from spaced_repetition.env import *
 
 class TestDatabase(unittest.TestCase):
     """Database interface tests."""
-    url = parse.urlparse(DATABASE_URL)
+    url = parse.urlparse(TEST_DATABASE_URL)
     conn = db_connect(url)
     dsn = get_dsn(conn)
     cur = conn.cursor()

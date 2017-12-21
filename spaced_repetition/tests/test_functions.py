@@ -12,7 +12,7 @@ from spaced_repetition import database
 
 class TestFunctions(unittest.TestCase):
     """Tests for utility functions."""
-    url = parse.urlparse(DATABASE_URL)
+    url = parse.urlparse(TEST_DATABASE_URL)
     conn = database.db_connect(url)
     dsn = database.get_dsn(conn)
     cur = conn.cursor()
