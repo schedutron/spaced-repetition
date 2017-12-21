@@ -4,3 +4,5 @@ spaced_repetition/env.py
 .DS_Store
 spaced_repetition/__pycache__/
 spaced_repetition/tests/__pycache__/
+.coverage
+.coveralls.yml
