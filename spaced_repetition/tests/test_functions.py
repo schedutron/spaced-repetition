@@ -34,17 +34,29 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(get_colnames(self.cur), ['id', 'title', 'add_date'])
 
     def test_display_rows(self):
+        # Make this drier.
         out = StringIO()
         self.cur.execute(
-            "SELECT id, title, add_date from to_learn WHERE id IN (0, 1)"
+            "SELECT id, title, add_date from to_learn WHERE id=0"
+            )
+        with contextlib.redirect_stdout(out):
+            display_rows(self.cur)
+        output = out.getvalue()
+        expected = "id title                     add_date   \n\n"\
+                   "0  Polynomial Multiplication 2017-12-19 \n"
+        self.assertEqual(output, expected)
+
+        out = StringIO()
+        self.cur.execute(
+            "SELECT id, title, add_date from to_learn WHERE id=1"
             )
         with contextlib.redirect_stdout(out):
             display_rows(self.cur)
         output = out.getvalue()
         expected = "id title                       add_date   \n\n"\
-                   "0  Polynomial Multiplication   2017-12-19 \n"\
                    "1  Design of Computer Programs 2017-10-20 \n"
         self.assertEqual(output, expected)
+        
 
     def test_display_todays_stuff(self):
         out = StringIO()

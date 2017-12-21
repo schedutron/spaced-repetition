@@ -16,7 +16,7 @@ class TestDatabase(unittest.TestCase):
     cur = conn.cursor()
 
     def test_db_name(self):
-        self.assertEqual(self.dsn['dbname'], 'learn')
+        self.assertEqual(self.dsn['dbname'], 'pavjstve')
 
     def test_get_last_rev_with_id_and_level(self):
         self.cur = get_last_rev_with_id_and_level(self.cur)
@@ -30,17 +30,19 @@ class TestDatabase(unittest.TestCase):
 
     def test_get_rows_for_ids(self):
         self.cur = get_rows_for_ids(self.cur, [0, 1])
-        count = 0
         for row in self.cur:  # Just one row.
-            if count == 0:
-                id_val = 0
+            if row[0] == 0:
                 title = "Polynomial Multiplication"
-            else:
-                id_val = 1
+                add_date = datetime.datetime.strptime(
+                    '19122017', '%d%m%Y'
+                    ).date()
+            elif row[0] == 1:
                 title = "Design of Computer Programs"
-            self.assertEqual(row[0], id_val)
+                add_date = datetime.datetime.strptime(
+                    '20102017', '%d%m%Y'
+                    ).date()
             self.assertEqual(row[1], title)
-            count += 1
+            self.assertEqual(row[4], add_date)
     
     def test_set_for_next_date(self):
         pass
