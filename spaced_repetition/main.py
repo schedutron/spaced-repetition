@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 """Main script for the spaced repitition app."""
+# Add a boolean 'saturated' column to specify whether the entry is in
+# saturated mode, when the initial level is > 1. This is to be used for
+# uniform work distribution so that there isn't too much load at any given
+# day.
 from urllib import parse
 
 from spaced_repetition import database

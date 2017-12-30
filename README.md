@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/schedutron/spaced-repetition.svg?branch=master)](https://travis-ci.org/schedutron/spaced-repetition)
 [![Coverage Status](https://coveralls.io/repos/github/schedutron/spaced-repetition/badge.svg?branch=master)](https://coveralls.io/github/schedutron/spaced-repetition?branch=master)
+![Lines of code](https://tokei.rs/b1/github/schedutron/spaced-repetition)
 
 ![Wikipedia Illustration](https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Leitner_system_alternative.svg/460px-Leitner_system_alternative.svg.png)
 
