@@ -49,6 +49,20 @@ class TestDatabase(unittest.TestCase):
     
     def test_init_test_db(self):
         pass
+    
+    def test_insert_rows(self):
+        insert_row(self.cur,
+                   'notebooks',
+                   '(title, begin_date, total_entries)',
+                   ('The Book', datetime.datetime.now().date(), 9)
+                  )
+        self.cur.execute(
+            "select title, begin_date, total_entries from notebooks"
+            " where title='The Book'")
+        row = next(self.cur)
+        self.cur.execute("delete from notebooks where title='The Book'")
+        self.cur.connection.commit()
+        self.assertEqual(('The Book', datetime.datetime.now().date(), 9), row)
 
 
 if __name__ == "__main__":

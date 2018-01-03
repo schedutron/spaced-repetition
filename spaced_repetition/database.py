@@ -51,3 +51,12 @@ def set_for_next_date(cur, ids):
 def init_test_db():
     """Initialize test database - for testing."""
     pass
+
+
+def insert_row(cur, rel_name, params, row):
+    """Insert the given row into the relation with given name and parameters
+    (attributes)."""
+    query = "insert into %s%s " % (rel_name, params)
+    query += "values(%s)" % ', '.join(['%s']*len(row))
+    cur.execute(query, row)
+    cur.connection.commit()
