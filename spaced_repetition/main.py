@@ -26,6 +26,10 @@ def main():
             print("Update Done:\n")
             cur = database.get_rows_for_ids(cur, ids)
             functions.display_rows(cur)
+        elif query.lower() == "insert entry":
+            functions.insert_entry(cur)
+        elif query.lower() == "insert source":
+            functions.insert_source(cur)
         elif query.lower() == "exit":
             print("Goodbye.")
             break

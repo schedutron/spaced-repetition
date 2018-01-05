@@ -56,7 +56,17 @@ def init_test_db():
 def insert_row(cur, rel_name, params, row):
     """Insert the given row into the relation with given name and parameters
     (attributes)."""
+    # Why not use a dictionary instead of passing parameters separately?
     query = "insert into %s%s " % (rel_name, params)
     query += "values(%s)" % ', '.join(['%s']*len(row))
     cur.execute(query, row)
     cur.connection.commit()
+
+
+def get_source_id_by_title(cur, title):
+    """Get source id for a given title."""
+    cur.execute("SELECT id FROM notebooks WHERE title = %s", (title,))
+    rows = cur.fetchall()
+    if rows:
+        return rows[0][0]
+    return None

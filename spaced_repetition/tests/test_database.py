@@ -63,6 +63,21 @@ class TestDatabase(unittest.TestCase):
         self.cur.execute("delete from notebooks where title='The Book'")
         self.cur.connection.commit()
         self.assertEqual(('The Book', datetime.datetime.now().date(), 9), row)
+    
+    def test_get_source_id_by_title(self):
+        insert_row(self.cur,
+                   'notebooks',
+                   '(title, begin_date, total_entries)',
+                   ('The Book', datetime.datetime.now().date(), 9)
+                  )
+        self.cur.execute(
+            "select id from notebooks"
+            " where title='The Book'")
+        book_id_true = next(self.cur)[0]
+        book_id = get_source_id_by_title(self.cur, 'The Book')
+        self.cur.execute("delete from notebooks where title='The Book'")
+        self.cur.connection.commit()
+        self.assertEqual(book_id, book_id_true)
 
 
 if __name__ == "__main__":
