@@ -33,7 +33,7 @@ def main():
         elif query.lower() == "exit":
             print("Goodbye.")
             break
-        else:
+        elif query:  # Skip this when the user just presses Enter.
             print("Please enter a valid query.")
 
 
