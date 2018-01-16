@@ -75,7 +75,7 @@ def insert_source(cur):
 
 def insert_entry(cur):
     """Take input from user and add to to_learn relation."""
-    print("Press enter to skip optional entries.\n")
+    print("Press enter to skip optional fields.\n")
     err_msg = "Please enter a valid input."
     title = ''
     while not title:
@@ -93,7 +93,7 @@ def insert_entry(cur):
         page_num_start = None
     
     while True:
-        page_num_end = input("Enter start page (optional): ")
+        page_num_end = input("Enter end page (optional): ")
         if not page_num_end:
             break
         try:
@@ -106,7 +106,7 @@ def insert_entry(cur):
     
     while True:
         add_date = input(
-            "Enter add_date as dd/mm/yyyy (skip to use today's date): ")
+            "Enter add_date as dd-mm-yyyy (skip to use today's date): ")
         if not add_date:
             break
         try:
