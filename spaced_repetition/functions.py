@@ -1,4 +1,5 @@
 """Utility functions for use elsewhere in the package"""
+# Use postgres now() function instead of datetime's now.
 import datetime
 from spaced_repetition import database
 
