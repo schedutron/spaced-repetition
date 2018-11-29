@@ -51,6 +51,12 @@ def display_todays_stuff(cur):
     display_rows(cur)
 
 
+def display_all_entries(cur):
+    """Displays all the learning entries."""
+    cur = database.get_all_rows(cur)
+    display_rows(cur)
+
+
 def insert_source(cur):
     """Take input from user and add to notebooks relation."""
     print("Press enter to skip optional entries.\n")

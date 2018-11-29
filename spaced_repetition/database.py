@@ -31,6 +31,11 @@ def get_last_rev_with_id_and_level(cur):
     cur.execute("SELECT id, last_revision, level from to_learn")
     return cur
 
+def get_all_rows(cur):
+    """Fetches all rows from the to_learn table."""
+    cur.execute("SELECT * FROM to_learn")
+    return cur
+
 
 def get_rows_for_ids(cur, ids):
     """Fetches rows with given ids."""

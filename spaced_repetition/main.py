@@ -19,6 +19,8 @@ def main():
         query = input("-|-> ")
         if query.lower() == "today":
             functions.display_todays_stuff(cur)
+        elif query.lower() == "display all":
+            functions.display_all_entries(cur)
         elif query.lower() == "update":
             ids = input("Enter the ids that you have revised: ")
             ids = [int(i.strip()) for i in ids.split(',')]
