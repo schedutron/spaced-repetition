@@ -15,3 +15,11 @@ Create `env.py` with the following contents:
 DATABASE_URL = 'your postgres database url'
 TEST_DATABASE_URL = 'url of test database'
 ```
+
+## Commands
+`insert entry` - To add a newly learned item in the database
+`insert source` - To add a source of knowledge, e.g., a book or a website
+`display all` - To display all the entries in the database
+`today` - To display the items you need to revise today
+`update` - To update the "confidence level" of an item after you revised it
+`exit` - To exit the REPR
